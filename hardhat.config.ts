@@ -45,7 +45,7 @@ const config: HardhatUserConfig = {
     blastSepolia: {
       url: 'https://sepolia.blast.io',
       accounts: [process.env.BLAST_SEPOLIA_PRIVATE_KEY || ''],
-      gasPrice: 1000000000,
+      gasPrice: 3000000000,
     },
   },
   etherscan: {

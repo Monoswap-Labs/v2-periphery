@@ -8,21 +8,25 @@ import "./libraries/UniswapV2Library.sol";
 import "./libraries/SafeMath.sol";
 import "./interfaces/IERC20.sol";
 import "./interfaces/IWETH.sol";
+import "./interfaces/IBlast.sol";
 
 contract MonoswapV2Router02 is IMonoswapV2Router02 {
     using SafeMath for uint;
 
     address public immutable override factory;
     address public immutable override WETH;
+    address public immutable BLAST;
 
     modifier ensure(uint deadline) {
         require(deadline >= block.timestamp, "MonoswapV2Router: EXPIRED");
         _;
     }
 
-    constructor(address _factory, address _WETH) public {
+    constructor(address _factory, address _WETH, address _BLAST, address _operator) public {
         factory = _factory;
         WETH = _WETH;
+        BLAST = _BLAST;
+        IBlast(_BLAST).configure(IBlast.YieldMode.CLAIMABLE, IBlast.GasMode.CLAIMABLE, _operator);
     }
 
     receive() external payable {
