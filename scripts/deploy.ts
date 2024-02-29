@@ -3,7 +3,7 @@ import { ethers } from 'hardhat';
 async function main() {
   const [deployer] = await ethers.getSigners();
   const v2Factory = {
-    address: '0x3Ff3AC9d1423e6a07cc0891500983F924dDFBffb',
+    address: '0xE27cb06A15230A7480d02956a3521E78C5bFD2D0',
   };
   const weth = {
     address: '0x4300000000000000000000000000000000000004',
